@@ -3,21 +3,25 @@ using namespace std;
 int main()
 {
 
-long long n,i,p,count=0;
-cin>>n;
-
-for(i=2;i<=n;i++)
+long long n;
+cin >> n;
+long long i, j;
+bool arr[n + 1] = {0};
+arr[0] = 1;
+for (i = 2; (i * i <= n); i++)
 {
-for(long long j=1;j<=i;j++)
+    j = (i * i);
+while(j<=n)
 {
-if(i%j==0)
-count++;
-
-
+if(!(arr[j]))
+    arr[j] = 1;
+j = j + i;
 }
-if(count==2)
-cout<<i<<" ";
-count=0;
+}
+for (i = 1; i <= n;i++)
+{
+if(!arr[i])
+    cout << i << endl;
 
 }
 return 0;
